@@ -18,7 +18,7 @@ jobs:
       - run: ruff format --check .
       - run: python -c "import rulebook; rulebook.load_rules()"
       - run: python -c "import dictionary; dictionary.load_crosswalk()"
-      - run: pytest -q
+      - run: pytest -q --cov --cov-fail-under=90
       - run: python -m tools.report -o out/rulebook.md
       # Customer artifacts are not in the repo. The pipeline and golden tests run against them
       # only when CCM_FIXTURE_ROOT points at a directory containing the files listed in
